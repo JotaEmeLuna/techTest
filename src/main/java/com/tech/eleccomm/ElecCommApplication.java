@@ -1,4 +1,4 @@
-package com.tech.elecComm;
+package com.tech.eleccomm;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.tech.elecComm;
+package com.tech.eleccomm;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
