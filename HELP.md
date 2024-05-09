@@ -1,17 +1,11 @@
-# Getting Started
+# Service to obtain the price list for a product, brand and date
 
 ### Reference Documentation
-For further reference, please consider the following sections:
+- The default port of the application is 8080 but if you want to change it you must do so in the server.port parameter of the application.yaml file.
+- You can check the values of the H2 database through the console at the url: http://localhost:8080/h2-console (you must start the project previously).
+  
+  The JDBC URL is: 'jdbc:h2:mem:mydb' and password is: 'password'
+- You have the OpenApi specification available at the url: http://localhost:8080/swagger-ui/index.html
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.2.5/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.2.5/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/3.2.5/reference/htmlsingle/index.html#web)
 
-### Guides
-The following guides illustrate how to use some features concretely:
-
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
 

@@ -13,7 +13,10 @@ public class PriceToPriceRateDto {
     private ModelMapper modelMapper;
 
     public PriceRateDto entityToDto(Price price) {
-        PriceRateDto dto = modelMapper.map(price, PriceRateDto.class);
+        PriceRateDto dto = null;
+        if(price != null) {
+            dto = modelMapper.map(price, PriceRateDto.class);
+        }
         return dto;
     }
 }
