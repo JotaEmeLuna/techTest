@@ -1,6 +1,7 @@
 package com.tech.eleccomm.infrastructure.controllers;
 
 import com.tech.eleccomm.application.dto.PriceRateDto;
+import com.tech.eleccomm.application.exceptions.NotFoundException;
 import com.tech.eleccomm.application.service.PriceService;
 import com.tech.eleccomm.infrastucture.controllers.PriceRateController;
 import org.junit.jupiter.api.Assertions;
@@ -36,7 +37,7 @@ class PriceRateControllerTest {
     }
 
     @Test
-    void getPriceRateOK() {
+    void getPriceRateOK() throws Exception {
         LocalDateTime dateTime = LocalDateTime.of(2024, 05, 1, 10, 1);
         PriceRateDto priceRate = new PriceRateDto(1L, 1L, dateTime, dateTime, BigDecimal.ONE);
         when(priceService.findPrice(dateTime, 1L, 1L)).thenReturn(priceRate);
@@ -46,10 +47,9 @@ class PriceRateControllerTest {
     }
 
     @Test
-    void getPriceRateNotFound() {
+    void getPriceRateNotFound() throws Exception {
         LocalDateTime dateTime = LocalDateTime.of(2024, 05, 1, 10, 1);
         when(priceService.findPrice(dateTime, 1L, 1L)).thenReturn(null);
-        ResponseEntity<PriceRateDto> result = priceRateController.getPriceRate(dateTime, 1L, 1L);
-        Assertions.assertEquals(HttpStatus.NOT_FOUND, result.getStatusCode());
+        Assertions.assertThrows(NotFoundException.class, () -> priceRateController.getPriceRate(dateTime, 1L, 1L));
     }
 }

@@ -1,6 +1,7 @@
 package com.tech.eleccomm.infrastucture.controllers;
 
 import com.tech.eleccomm.application.dto.PriceRateDto;
+import com.tech.eleccomm.application.exceptions.NotFoundException;
 import com.tech.eleccomm.application.service.PriceService;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -26,10 +27,10 @@ public class PriceRateController {
     public ResponseEntity<PriceRateDto> getPriceRate(
             @Parameter(description = "Price rate request date", required = true)  @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateTime,
             @Parameter(description = "Product ID for price list", required = true) @RequestParam("product") Long product,
-            @Parameter(description = "Brand ID for price list", required = true) @RequestParam("brand") Long brand) {
+            @Parameter(description = "Brand ID for price list", required = true) @RequestParam("brand") Long brand) throws Exception {
         PriceRateDto priceRate = priceService.findPrice(dateTime, product, brand);
         if(priceRate == null) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            throw new NotFoundException("Price rate not found for date: "+dateTime+", product: "+product+", and brand: "+brand);
         }
         return ResponseEntity.ok(priceRate);
     }
